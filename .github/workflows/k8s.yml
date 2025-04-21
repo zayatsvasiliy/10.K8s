@@ -18,6 +18,7 @@ jobs:
           ssh -v -T \
             -o StrictHostKeyChecking=no \
             -o UserKnownHostsFile=/dev/null \
+            -o LogLevel=DEBUG3 \
             -i jump_key \
             -J root@178.124.206.53:32510 \
             root@192.168.208.11 -p 22 << 'EOF'
