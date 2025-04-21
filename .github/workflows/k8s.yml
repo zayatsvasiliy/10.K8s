@@ -17,10 +17,10 @@ jobs:
           chmod 600 jump_key
 
       - name: Add remote host to known_hosts
-          run: |
-            mkdir -p ~/.ssh
-            ssh-keyscan -H 192.168.208.11 >> ~/.ssh/known_hosts
-            chmod 644 ~/.ssh/known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 192.168.208.11 >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
 
       - name: Check pods via jump host
         id: check
