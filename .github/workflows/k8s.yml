@@ -15,18 +15,6 @@ jobs:
         run: |
           echo "${{ secrets.JUMP_SSH_KEY }}" > jump_key
           chmod 600 jump_key
-          mkdir -p ~/.ssh
-          ssh-keyscan -H 192.168.208.11 >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-          ssh -vvv -T \
-            -o StrictHostKeyChecking=no \
-            -o UserKnownHostsFile=/dev/null \
-            -o LogLevel=DEBUG3 \
-            -i jump_key \
-            -J root@178.124.206.53:32510 \
-            root@192.168.208.11 -p 22 << 'EOF'
-              kubectl get pods --all-namespaces
-          EOF
 
       - name: Check pods via jump host
         id: check
