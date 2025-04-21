@@ -3,7 +3,7 @@ name: Check K8s
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no \
               -i jump_key \
-              -J ${{ secrets.JUMP_USER }}@${{ secrets.JUMP_HOST }} \
+              -J "${{ secrets.JUMP_USER }}@${{ secrets.JUMP_HOST }}:32510" \
               ${{ secrets.JUMP_USER }}@${{ secrets.K8S_HOST }} << 'EOF'
             set -e
             echo "Checking pods status..."
