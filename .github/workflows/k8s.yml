@@ -18,7 +18,7 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H 192.168.208.11 >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
-          ssh -v -T \
+          ssh -vvv -T \
             -o StrictHostKeyChecking=no \
             -o UserKnownHostsFile=/dev/null \
             -o LogLevel=DEBUG3 \
